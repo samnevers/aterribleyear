@@ -1,0 +1,8 @@
+<h1>IT'S AN INDEX PAGE FOR USERS</H1>
+  <H3>HOW ARE YOU GOING TO DISPLAY SHIT SAM HOW ARE YOU GOING TO DO DIS!?</h3>
+
+<% @users.each do |u| %>
+<p>
+  <%= link_to(u.username, u) %>
+</p>
+<% end %>

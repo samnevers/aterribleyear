@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Burn</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+
+  <h1>Another Terrible Year</h1>
+
+  <nav>
+    <%= link_to("Home", root_path) %> |
+    <%= link_to("WHYYY!?", about_path) %> |
+    <%= link_to("All 2016 Posts", posts_path) %> |
+
+    <!-- Nav bar conditionals, dependent on user being logged in -->
+      <% unless @current_user.present? %>
+        <%= link_to("Sign Up", new_user_path) %> |
+        <%= link_to("Login", login_path) %> |
+      <% else %>
+        <%= link_to("Create a Post", new_post_path) %> |
+        <%= link_to("Edit Profile", edit_user_path) %> |
+        <%= link_to("Logout #{@current_user.email}", login_path, :method => :delete) %>
+      <% end %>
+
+    <!-- User flash message, if login successful -->
+      <% if flash[:success] %>
+        <%= flash[:success] %>
+      <% end %>
+  </nav>
+
+  <hr>
+    <!-- User flash message, if login unsuccessful -->
+    <% if flash[:error] %>
+      <%= flash[:error] %>
+    <% end %>
+
+    <%= yield %>
+  <hr>
+
+</body>
+</html>

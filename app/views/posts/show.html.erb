@@ -1,0 +1,20 @@
+<h5><%= @post.date.strftime("Shit happened on: %e %B %Y") %></h5>
+
+<h3><%= @post.title %></h3>
+
+<% if @post.image %>
+<p><%= image_tag(@post.image, :class => "post_image") %>
+  <% end %>
+
+<% if @post.user_id %>
+<p>
+  Submitted by: <%= image_tag(@post.user.image, :class => "avatar") %> <%= link_to( @post.user.username, "/users/#{@post.user_id}") %>
+</p>
+<% end %>
+
+<p><%= @post.text %></p>
+
+
+<!-- <div class="controls">
+  <%= link_to "Edit Post", edit_post_path( @post ) %> |
+  <%= link_to "Delete Post", post_path( @post), :method => :delete, :data => {:confirm => "Are you sure?"} %> -->

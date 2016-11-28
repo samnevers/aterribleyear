@@ -1,0 +1,24 @@
+<%= form_for @post do |f| %>
+  <p>
+    <%= f.label :title %>
+    <%= f.text_field :title, :required => true %>
+  </p>
+  <p>
+    <%= f.label :date %>
+    <%= f.date_field :date, :required => true, :min => "2016-01-01", :max => "2016-12-31" %>
+  </p>
+  <p>
+    <%= f.label :text %>
+    <%= f.text_field :text, size: 200, :class => "textbox", :required => true %>
+  </p>
+  <p>
+    <%= f.label :image %>
+    <%= f.url_field :image %>
+  </p>
+
+  <%= f.submit %>
+<% end %>
+
+<!-- TO DO: -->
+  <!-- Edit date field so only day and month shows -->
+  <!-- Find out how to save user_id automatically with form submission -->
