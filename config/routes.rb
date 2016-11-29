@@ -6,6 +6,12 @@ Rails.application.routes.draw do
 
   resources :posts
 
+  get "/posts/:id/rate" => 'posts#rate', :as => "rate_post"
+
+  post "posts/:id/comment" => "posts#comment", :as => "comment_post"
+
+
+
   get "/users/edit" => "users#edit", :as => "edit_user"
 
   resources :users, :except => [:edit]

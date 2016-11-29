@@ -1,15 +1,19 @@
 # == Schema Information
 #
-# Table name: ratings
+# Table name: comments
 #
 #  id         :integer          not null, primary key
 #  user_id    :integer
 #  post_id    :integer
+#  text       :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
 
-class Rating < ActiveRecord::Base
-  belongs_to :post
-  belongs_to :user
+require 'test_helper'
+
+class CommentTest < ActiveSupport::TestCase
+  # test "the truth" do
+  #   assert true
+  # end
 end
