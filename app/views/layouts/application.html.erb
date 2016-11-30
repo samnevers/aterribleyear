@@ -7,12 +7,14 @@
   <%= csrf_meta_tags %>
   <%= javascript_include_tag("jquery.ui.widget", "jquery.iframe-transport", "jquery.fileupload", "jquery.cloudinary") %>
   <%= cloudinary_js_config %>
+  <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
 </head>
 <body>
 
 <header>
-  <h1>Another Terrible Year</h1>
-
   <div class="flash-ohno">
     <% if flash[:destroyed] %>
       <%= flash[:destroyed] %>
@@ -20,28 +22,32 @@
   </div>
 
   <nav>
-    <%= link_to("Home", root_path) %> |
-    <%= link_to("WHYYY!?", about_path) %> |
-    <%= link_to("All 2016 Posts", posts_path) %> |
+    <div class="nav-wrapper">
+      <a href="#!" class="brand-logo">&nbsp;Another Terrible Year</a>
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li><%= link_to("Home", root_path) %></li>
+      <li><%= link_to("WHYYY!?", about_path) %></li>
+      <li><%= link_to("All 2016 Posts", posts_path) %></li>
 
-    <!-- Nav bar conditionals, dependent on user being logged in -->
-      <% unless @current_user.present? %>
-        <%= link_to("Sign Up", new_user_path) %> |
-        <%= link_to("Login", login_path) %> |
-      <% else %>
-        <%= link_to("Create a Post", new_post_path) %> |
-        <%= link_to("Edit Profile", edit_user_path) %> |
-        <%= link_to("Logout #{@current_user.email}", login_path, :method => :delete) %>
-      <% end %>
+      <!-- Nav bar conditionals, dependent on user being logged in -->
+        <% unless @current_user.present? %>
+          <li><%= link_to("Sign Up", new_user_path) %></li>
+          <li><%= link_to("Login", login_path) %></li>
+        <% else %>
+          <li><%= link_to("Create a Post", new_post_path) %></li>
+          <li><%= link_to("Edit Profile", edit_user_path) %></li>
+          <li><%= link_to("Logout #{@current_user.email}", login_path, :method => :delete) %></li>
+        <% end %>
+    </ul>
 
     <!-- User flash message, if login successful -->
       <% if flash[:success] %>
         <%= flash[:success] %>
       <% end %>
+    </div>
   </nav>
 </header>
 
-  <hr>
     <!-- User flash message, if login unsuccessful -->
     <% if flash[:error] %>
       <%= flash[:error] %>
