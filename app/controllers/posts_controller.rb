@@ -32,18 +32,21 @@ class PostsController < ApplicationController
   end
 
   def update
-    @user = User.find_by :id => params[:id]
+    # @user = User.find_by :id => params[:id]
     post = Post.find_by :id => params[:id]
     if params[:file].present?
       req = Cloudinary::Uploader.upload(params[:file])
-      @user.image = req['public_id']
+      post.image = req['public_id']
     end
-    if post.assign_attributes(user_params)
-      post.save
+      post.assign_attributes(post_params)
+    if post.save
     # post.update post_params
-    redirect_to post_path/post.id
+      redirect_to "/posts/#{post.id}"
+    else
+      render :edit
+    end
   end
-end
+
 
   def destroy
     post = Post.find_by :id => params[:id]
