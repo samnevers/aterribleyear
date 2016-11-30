@@ -13,6 +13,12 @@
 <header>
   <h1>Another Terrible Year</h1>
 
+  <div class="flash-ohno">
+    <% if flash[:destroyed] %>
+      <%= flash[:destroyed] %>
+    <% end %>
+  </div>
+
   <nav>
     <%= link_to("Home", root_path) %> |
     <%= link_to("WHYYY!?", about_path) %> |

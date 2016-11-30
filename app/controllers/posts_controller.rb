@@ -32,6 +32,7 @@ class PostsController < ApplicationController
   end
 
   def update
+    @user = User.find_by :id => params[:id]
     post = Post.find_by :id => params[:id]
     if params[:file].present?
       req = Cloudinary::Uploader.upload(params[:file])
@@ -89,27 +90,15 @@ end
 
     if post && post.ratings.length >= 2
       Post.destroy_all
+      flash[:destroyed] = "Oh no! 2016 got too terrible! So we heard your cries and deleted it from history. If only it was that simple... Why not bitch about it by creating a new post?"
       return true
     end
     return false
-    # Find the post with the ID from the URL
-    # Is it the pinned post?
-    # Check if the ratings have hit a certain number
-      # Delete everything
-
-    # posts = Post.all
-    # pinposts = Post.find_by :pinnedpost => params[:pinnedpost]
-    # pinpost = pinposts.where :pinnedpost => true
-    # binding.pry
-    # if pinpost.ratings.length >= 2
-    #   posts.destroy_all
-    # end
   end
-
 
   private
     def post_params
-      params.require(:post).permit(:title, :user_id, :image, :text, :date, :type)
+      params.require(:post).permit(:title, :user_id, :image, :text, :date)
     end
 
     def comment_params
