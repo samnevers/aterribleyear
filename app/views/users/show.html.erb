@@ -2,12 +2,12 @@
 
 <ul>
   <li><%= @user.email %></li>
-  <li><%= @user.image %></li>
+  <li><%= cl_image_tag(@user.image) %></li>
   <li><%= @user.password_digest %></li>
 </ul>
 
 <!-- Only show these buttons if the @user variable contains the same user as @current_user -->
-<% if @user == @current_user %>
+<% if @user === @current_user %>
   <div class="controls">
     <%= link_to "Edit user", edit_user_path( @user ) %> |
     <%= link_to "Delete account", user_path( @user ), :method => :delete, :data => { :confirm => "Are you sure?" } %>

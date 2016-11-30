@@ -7,7 +7,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by :id => params[:id]
     @comment = Comment.new
-    @user = @current_user
+    @author_id = @post.user_id
   end
 
   def new
@@ -18,12 +18,10 @@ class PostsController < ApplicationController
     post = Post.new post_params
     post.user_id = @current_user.id
 
-    # if params[:file].present?
-    #   binding.pry
-    #   req = Cloudinary::Uploader.upload(params[:file])
-    #   post.image = req['public_id']
-    # end
-
+    if params[:file].present?
+      req = Cloudinary::Uploader.upload(params[:file])
+      post.image = req['public_id']
+    end
 
     post.save
     redirect_to "/posts/#{post.id}"
@@ -35,9 +33,16 @@ class PostsController < ApplicationController
 
   def update
     post = Post.find_by :id => params[:id]
-    post.update post_params
+    if params[:file].present?
+      req = Cloudinary::Uploader.upload(params[:file])
+      @user.image = req['public_id']
+    end
+    if post.assign_attributes(user_params)
+      post.save
+    # post.update post_params
     redirect_to post_path/post.id
   end
+end
 
   def destroy
     post = Post.find_by :id => params[:id]

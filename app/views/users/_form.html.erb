@@ -12,7 +12,8 @@
   </ul>
 <% end %>
 
-<%= form_for @user do |f| %>
+<%= form_for(@user, :html => {:multipart => true}) do |f| %>
+  <div class="form">
   <p>
     <%= f.label :username %>
     <%= f.text_field :username, :required => true %>
@@ -23,7 +24,7 @@
   </p>
   <p>
     <%= f.label :image %>
-    <%= f.url_field :image, :required => true %>
+    <%= f.cl_image_upload :image, :required => true %>
   </p>
   <p>
     <%= f.label :password %>
@@ -34,6 +35,8 @@
     <%= f.password_field :password_confirmation, :required => true %>
   </p>
 
-
+  <button class = "submit">
   <%= f.submit %>
+  </button>
+  </div>
 <% end %>

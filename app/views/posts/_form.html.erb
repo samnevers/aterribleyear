@@ -1,6 +1,7 @@
 
 
-<%= form_for @post, :html => {:multipart => true} do |f| %>
+<%= form_for(@post, :html => {:multipart => true}) do |f| %>
+  <div class="form">
   <p>
     <%= f.label :title %>
     <%= f.text_field :title, :required => true %>
@@ -15,15 +16,13 @@
   </p>
   <p>
     <%= f.label :image %>
-    <%= f.url_field :image %>
-
-    <%#= f.label :image %>
-    <%#= cl_image_upload_tag :image %>
-
+    <%= f.cl_image_upload :image, :required => true %>
 
   </p>
-
+  <button class ="submit">
   <%= f.submit %>
+  </button>
+</div>
 <% end %>
 
 <!-- TO DO: -->

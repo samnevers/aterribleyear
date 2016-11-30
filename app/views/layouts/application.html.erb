@@ -10,6 +10,7 @@
 </head>
 <body>
 
+<header>
   <h1>Another Terrible Year</h1>
 
   <nav>
@@ -32,6 +33,7 @@
         <%= flash[:success] %>
       <% end %>
   </nav>
+</header>
 
   <hr>
     <!-- User flash message, if login unsuccessful -->
@@ -41,6 +43,8 @@
 
     <%= yield %>
   <hr>
+<footer>
+</footer>
 
 </body>
 </html>

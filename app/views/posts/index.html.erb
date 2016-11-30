@@ -3,8 +3,8 @@
 <% post = @posts.order(:date) %>
 
 <% post.each do |p| %>
-  <p>
+  <div class="post">
     <%= p.date %>
     <%= link_to(p.title, post_path(p)) %>
-  </p>
+  </div>
 <% end %>
