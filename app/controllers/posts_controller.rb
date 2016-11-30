@@ -7,6 +7,7 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by :id => params[:id]
     @comment = Comment.new
+    @user = @current_user
   end
 
   def new
@@ -59,8 +60,11 @@ class PostsController < ApplicationController
     else
       flash[:error] = "You have already rated this"
     end
-
-    redirect_to post
+    if destroy_2016?()
+      redirect_to posts_path
+    else
+      redirect_to post
+    end
   end
 
   def comment
@@ -75,7 +79,27 @@ class PostsController < ApplicationController
     redirect_to post
   end
 
+  def destroy_2016?
+    post = Post.find_by(:id => params[:id], :pinnedpost => true)
 
+    if post && post.ratings.length >= 2
+      Post.destroy_all
+      return true
+    end
+    return false
+    # Find the post with the ID from the URL
+    # Is it the pinned post?
+    # Check if the ratings have hit a certain number
+      # Delete everything
+
+    # posts = Post.all
+    # pinposts = Post.find_by :pinnedpost => params[:pinnedpost]
+    # pinpost = pinposts.where :pinnedpost => true
+    # binding.pry
+    # if pinpost.ratings.length >= 2
+    #   posts.destroy_all
+    # end
+  end
 
 
   private
@@ -84,7 +108,7 @@ class PostsController < ApplicationController
     end
 
     def comment_params
-      params.require(:comment).permit(:text)
+      params.require(:comment).permit(:text, :user_id)
     end
 
 end

@@ -1,9 +1,10 @@
 <h3>2016: Another Terrible Year</h3>
 
 <% post = @posts.order(:date) %>
+
 <% post.each do |p| %>
-<p>
-  <%= p.date %>
-  <%= link_to(p.title, post_path(p)) %>
-</p>
+  <p>
+    <%= p.date %>
+    <%= link_to(p.title, post_path(p)) %>
+  </p>
 <% end %>

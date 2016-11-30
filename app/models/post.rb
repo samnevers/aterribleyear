@@ -11,6 +11,7 @@
 #  type       :text
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  pinnedpost :boolean
 #
 
 class Post < ActiveRecord::Base

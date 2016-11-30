@@ -10,6 +10,7 @@ Rails.application.routes.draw do
 
   post "posts/:id/comment" => "posts#comment", :as => "comment_post"
 
+  get "/posts/:id/destroy2016" => "posts#destroy2016", :as => "destroy2016"
 
 
   get "/users/edit" => "users#edit", :as => "edit_user"

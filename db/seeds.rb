@@ -24,7 +24,9 @@ puts "\tUser count: #{User.all.count}"
     # DUMMY POSTS
 Post.destroy_all
 
-p1 = Post.create :title => "Trump", :text => "The world is over. America, you suck. WHYYYYY!", :date => "2016-11-26"
+p1 = Post.create :title => "Burn 2016 Burn!", :text => "Upvote if you wish we could erase 2016 from history!!", :date => "2016-01-01", :pinnedpost => true
+
+p6 = Post.create :title => "Trump", :text => "The world is over. America, you suck. WHYYYYY!", :date => "2016-11-26"
 
 p2 = Post.create :title => "Found out Santa isn't real", :text => "WHY WOULD YOU LIE TO MEEEE. MY LIFE IS A LIEEEEE!!", :date => "2016-1-1"
 
@@ -41,9 +43,9 @@ puts "\tPost count: #{Post.all.count}"
       # USER HAS_MANY POST
       # POST BELONGS_TO USER
 u1.posts << p2
-u2.posts << p1 << p4
+u2.posts << p6 << p4
 u3.posts << p3
-u4.posts << p5
+u4.posts << p5 << p1
 
 # Testing stuff
 

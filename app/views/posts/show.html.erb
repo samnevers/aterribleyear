@@ -3,13 +3,13 @@
 <h3><%= @post.title %></h3>
 
 <% if @post.image %>
-<p><%= image_tag(@post.image, :class => "post_image") %>
-  <% end %>
+  <p><%= image_tag(@post.image, :class => "post_image") %>
+<% end %>
 
 <% if @post.user_id %>
-<p>
-  Submitted by: <%= image_tag(@post.user.image, :class => "avatar") %> <%= link_to( @post.user.username, "/users/#{@post.user_id}") %>
-</p>
+  <p>
+    Submitted by: <%= image_tag(@post.user.image, :class => "avatar") %> <%= link_to( @post.user.username, "/users/#{@post.user_id}") %>
+  </p>
 <% end %>
 
 <p><%= @post.text %></p>
@@ -20,26 +20,30 @@
 </p>
 
 <!-- LINK TO RATE POST HERE -->
-<%= link_to "Rate Post", rate_post_path(@post) %>
+<% if @user.present? %>
+  <%= link_to "Rate Post", rate_post_path(@post) %>
+<% end %>
 
 <!-- Show comments here -->
 <% @post.comments.each do | comment | %>
-<p>
-  <%= image_tag(comment.user.image, :class => "avatar") %>
-  <%= link_to(comment.user.username, "/users/#{comment.user_id}") %>:
-  <%= comment.text %>
-</p>
+  <p>
+    <%= image_tag(comment.user.image, :class => "avatar") %>
+    <%= link_to(comment.user.username, "/users/#{comment.user_id}") %>:
+    <%= comment.text %>
+  </p>
 <% end %>
 <!-- ALLOW LOGGED IN USER TO COMMENT HERE -->
-<p>
-<%= form_for @comment, :url => comment_post_path( :post_id => @post, :user_id => @post.user.id ) do |f| %>
+<% if @user.present? %>
   <p>
-    <%= f.label :text %>
-    <%= f.text_field :text, :required => true %>
+    <%= form_for @comment, :url => comment_post_path( :post_id => @post, :user_id => @post.user.id ) do |f| %>
+      <p>
+        <%= f.label :text %>
+        <%= f.text_field :text, :required => true %>
+      </p>
+      <%= f.submit %>
+    <% end %>
   </p>
-  <%= f.submit %>
 <% end %>
-</p>
 
 <div class="controls">
   <%= link_to "Edit Post", edit_post_path( @post ) %> |
