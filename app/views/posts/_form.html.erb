@@ -18,12 +18,12 @@
       </div>
       <div class="input-field col s6 offset-s3">
         <%= f.label :image, :class => "active" %>
-        <button class="btn waves-effect waves-light">
-        <%= f.cl_image_upload :image, :required => true, :class => "file-path-wrapper" %>
-      </button>
+        <!-- <button class="btn waves-effect waves-light"> -->
+        <%= f.cl_image_upload :image, :required => true%>
+      <!-- </button> -->
       </div>
       <div class="input-field col s6 offset-s3">
-  <button class ="btn waves-effect waves-light" type="submit" name="action">
+  <button class ="btn waves-effect waves-light">
   <%= f.submit %>
   </button>
   </div>
