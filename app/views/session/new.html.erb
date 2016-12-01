@@ -1,14 +1,20 @@
 <h3>Login</h3>
 
+<div class="row">
 <%= form_tag login_path do %>
-  <p>
-    <%= label_tag :email %>
-    <%= email_field_tag :email, "", :required => true %>
-  </p>
-  <p>
-    <%= label_tag :password %>
-    <%= password_field_tag :password, "", :required => true %>
-  </p>
+    <div class="input-field col s6 offset-s3">
+      <%= label_tag :email %>
+      <%= email_field_tag :email, "", :required => true %>
+    </div>
+    <div class="input-field col s6 offset-s3">
+      <%= label_tag :password %>
+      <%= password_field_tag :password, "", :required => true %>
+  </div>
 
+  <div class="input-field col s6 offset-s3">
+    <button class ="btn waves-effect waves-light">
   <%= submit_tag "Login" %>
-<% end %>
+  <% end %>
+</button>
+</div>
+</div>
