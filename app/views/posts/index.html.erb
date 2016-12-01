@@ -1,10 +1,10 @@
 <div class="container">
-<h3>2016: A Year of Shit</h3>
+<!-- <h3>2016: A Year of Shit</h3> -->
 
 <% post = @posts.order(:date) %>
 
 <% post.each do |p| %>
-<div class="card large">
+<div class="card large grey lighten-4">
   <div class="card-image waves-effect waves-block waves-light">
       <%= cl_image_tag(p.image, :class => "activator") %>
     </div>
@@ -17,7 +17,7 @@
         <%= p.ratings.length %>
           <!-- RATE ACTION -->
         <% if @current_user.present? %>
-        <%= link_to "Rate Post", rate_post_path(p) %>
+        <%= link_to "Burn Post", rate_post_path(p) %>
         <% end %>
           <!-- END RATINGS -->
       </div>

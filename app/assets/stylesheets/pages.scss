@@ -3,6 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 .collection {
+  background-color: white;
   .row{
     .collection-item{
       .circle{
@@ -16,4 +17,14 @@
   background-image: url("http://res.cloudinary.com/dum3wmulco/image/upload/v1480568979/fire-home_oirmop.jpg");
   background-size: cover;
   height: 70vh;
+}
+
+.about-hero{
+  background-color: black;
+  height: 40vh;
+}
+
+.wrapper {
+  text-align: center;
+  margin-top: 45vh;
 }

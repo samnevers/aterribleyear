@@ -3,14 +3,14 @@
 <div class="container">
   <div class="row">
           <div class="col s12">
-            <div class="card">
+            <div class="card grey lighten-4">
               <div class="card-image">
                 <%= cl_image_tag(@post.image) %>
               </div>
               <div class="card-content">
-                <h3>
+                <h4 class="fire">
                   <%= @post.title %>
-                </h3>
+                </h4>
 
                 <!-- Post Author Details -->
                   <% if @post.user_id %>
@@ -29,13 +29,14 @@
                 <%= @post.ratings.length %>
                   <!-- RATE ACTION -->
                 <% if @current_user.present? %>
-                <%= link_to "Rate Post", rate_post_path(@post) %>
+                <%= link_to "Burn Post", rate_post_path(@post) %>
                 <% end %>
                   <!-- END RATINGS -->
               </div>
             </div>
           </div>
         </div>
+
 
 <!-- END POST -->
 
@@ -69,7 +70,7 @@
             <%= f.text_field :text, :required => true, :class => "materialize-textarea", :id => "textarea1" %>
           </div>
         </div>
-        <button class="btn waves-effect waves-light">
+        <button class="btn waves-effect waves-light blue-grey lighten-2">
           <%= f.submit %>
         </button>
         <% end %>
