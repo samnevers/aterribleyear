@@ -90,7 +90,7 @@ class PostsController < ApplicationController
   def destroy_2016?
     post = Post.find_by(:id => params[:id], :pinnedpost => true)
 
-    if post && post.ratings.length >= 2
+    if post && post.ratings.length >= 2016
       Post.destroy_all
       flash[:destroyed] = "Oh no! 2016 got too terrible! So we heard your cries and deleted it from history. If only it was that simple... Why not bitch about it by creating a new post?"
       return true

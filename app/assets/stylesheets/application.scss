@@ -15,16 +15,23 @@
  */
 
 /* COLOUR SCHEME */
-$primary-color: #325375;
+$primary-color: #003240;
 $background-color: #F9EDE7;
 $accent-color: rgba(50, 83, 117, 0.8);
 $font-color: #160909;
 //
 $font-family: 'Montserrat', sans-serif;
 //
-// body {
-//   font-family: $font-family;
-// }
+
+  body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+  }
+
+  main {
+    flex: 1 0 auto;
+  }
 
 nav {
 //   width: 100%;
@@ -43,4 +50,8 @@ nav {
 //         background-color: red;
 //       }
     }
+}
+
+footer.page-footer {
+  background-color: $primary-color;
 }
