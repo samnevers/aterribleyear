@@ -61,11 +61,9 @@
   <!-- ALLOW LOGGED IN USER TO COMMENT -->
     <% if @current_user.present? %>
       <p>
-        <div class="row">
-          <form class="col s12">
             <div class="row">
               <div class="input-field col s12">
-        <%= form_for @comment, :url => comment_post_path( :post_id => @post, :user_id => @post.user.id ) do |f| %>
+        <%= form_for @comment, :class => "col s12", :url => comment_post_path( :post_id => @post, :user_id => @post.user.id ) do |f| %>
           <p>
             <%= f.label "Comment", :class => "active" %>
             <%= f.text_field :text, :required => true, :class => "materialize-textarea", :id => "textarea1" %>
@@ -75,8 +73,6 @@
           <%= f.submit %>
         </button>
         <% end %>
-      </form>
-    </div>
       </p>
     <% end %>
 <!-- END COMMENTS -->
