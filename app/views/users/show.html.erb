@@ -1,9 +1,9 @@
 <div class="container">
   <h3><%= @user.username %>'s Profile</h3>
 
-<ul>
-  <li><%= @user.email %></li>
-  <li><%= cl_image_tag(@user.image) %></li>
+<ul class="user_profile">
+  <li><%= cl_image_tag(@user.image, :class => "profile_image") %></li>
+  <li><h5><%= @user.username %>'s Bio</h5></li>
   <li><%= @user.bio %></li>
 </ul>
 

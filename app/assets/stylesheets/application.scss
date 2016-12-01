@@ -118,15 +118,22 @@ p .col .m9 .s12{
   // border-bottom: 1px solid white;
 }
 
-#post_title{
-  color: white;
-}
-
-#post_date{
+#post_title, #post_date, #post_text, #user_username, #user_email, #user_bio{
   color: white;
 }
 
 .cloudinary-fileupload{
+  color: white;
+}
+
+textarea{
+  height: 300px;
+}
+
+// Profile
+
+.user_profile{
+  text-align: center;
   color: white;
 }
 

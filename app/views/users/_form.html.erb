@@ -12,35 +12,39 @@
   </ul>
 <% end %>
 
-<%= form_for(@user, :html => {:multipart => true}) do |f| %>
-  <div class="form">
-  <p>
-    <%= f.label :username %>
+<div class="row">
+<%= form_for(@user, :html => {:multipart => true}, :class => "col s12") do |f| %>
+  <div class="input-field col s6 offset-s3">
+    <%= f.label :username, :class => "active" %>
     <%= f.text_field :username, :required => true %>
-  </p>
-  <p>
-    <%= f.label :email %>
+  </div>
+  <div class="input-field col s6 offset-s3">
+    <%= f.label :email, :class => "active" %>
     <%= f.email_field :email, :required => true %>
-  </p>
-  <p>
-    <%= f.label :bio %>
+  </div>
+  <div class="input-field col s6 offset-s3">
+    <%= f.label :bio, :class => "active" %>
     <%= f.text_area :bio %>
-  </p>
-  <p>
-    <%= f.label :image %>
+  </div>
+  <div class="input-field col s6 offset-s3">
+    <p>
+    <%= f.label :image, :class => "active" %>
     <%= f.cl_image_upload :image, :required => true %>
   </p>
-  <p>
-    <%= f.label :password %>
+  </div>
+  <div class="input-field col s6 offset-s3">
+    <%= f.label :password, :class => "active" %>
     <%= f.password_field :password, :required => true %>
-  </p>
-  <p>
-    <%= f.label :password_confirmation %>
+  </div>
+  <div class="input-field col s6 offset-s3">
+    <%= f.label :password_confirmation, :class => "active" %>
     <%= f.password_field :password_confirmation, :required => true %>
-  </p>
+  </div>
 
-  <button class = "submit">
+  <div class="input-field col s6 offset-s3">
+    <button class ="btn waves-effect waves-light">
   <%= f.submit %>
   </button>
   </div>
 <% end %>
+</div>
