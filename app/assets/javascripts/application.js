@@ -16,3 +16,11 @@
 //= require_tree .
 //= require cloudinary
 //= require materialize-sprockets
+
+$( document ).ready(function(){
+    // Nav Bar
+  $(".button-collapse").sideNav();
+    // Forms Text Area 
+  $('#textarea1').val('New Text');
+  $('#textarea1').trigger('autoresize');
+});

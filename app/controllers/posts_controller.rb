@@ -47,7 +47,6 @@ class PostsController < ApplicationController
     end
   end
 
-
   def destroy
     post = Post.find_by :id => params[:id]
     post.destroy
@@ -72,7 +71,7 @@ class PostsController < ApplicationController
     if destroy_2016?()
       redirect_to posts_path
     else
-      redirect_to post
+      redirect_to :back
     end
   end
 

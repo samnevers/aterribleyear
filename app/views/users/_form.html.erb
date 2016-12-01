@@ -23,6 +23,10 @@
     <%= f.email_field :email, :required => true %>
   </p>
   <p>
+    <%= f.label :bio %>
+    <%= f.text_area :bio %>
+  </p>
+  <p>
     <%= f.label :image %>
     <%= f.cl_image_upload :image, :required => true %>
   </p>

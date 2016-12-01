@@ -1,68 +1,92 @@
 
 <!-- POST -->
-  <h5>
-    <%= @post.date.strftime("Shit happened on: %e %B %Y") %>
-  </h5>
 
-  <h3>
-    <%= @post.title %>
-  </h3>
+  <div class="row">
+          <div class="col s12">
+            <div class="card">
+              <div class="card-image">
+                <%= cl_image_tag(@post.image) %>
+              </div>
+              <div class="card-content">
+                <h3>
+                  <%= @post.title %>
+                </h3>
 
-  <!-- Post Author Details -->
-    <% if @post.user_id %>
-      <p>
-        Submitted by: <%= cl_image_tag(@post.user.image, :class => "avatar") %> <%= link_to( @post.user.username, "/users/#{@post.user_id}") %>
-      </p>
-    <% end %>
-  <!-- End Post Author Details -->
+                <!-- Post Author Details -->
+                  <% if @post.user_id %>
+                    <p>
+                      Submitted by: <%= cl_image_tag(@post.user.image, :class => "avatar") %> <%= link_to( @post.user.username, "/users/#{@post.user_id}") %>
+                    </p>
+                  <% end %>
+                <!-- End Post Author Details -->
+                <br/>
+                <p><%= @post.text %></p>
+                <br/>
+                <p><%= @post.date.strftime("Shit happened on: %e %B %Y") %></p>
+              </div>
+                <!-- RATINGS -->
+              <div class="card-action">
+                <%= @post.ratings.length %>
+                  <!-- RATE ACTION -->
+                <% if @current_user.present? %>
+                <%= link_to "Rate Post", rate_post_path(@post) %>
+                <% end %>
+                  <!-- END RATINGS -->
+              </div>
+            </div>
+          </div>
+        </div>
 
-  <% if @post.image %>
-    <p><%= cl_image_tag(@post.image) %></p>
-  <% end %>
-
-  <p><%= @post.text %></p>
 <!-- END POST -->
-
-
-<!-- RATINGS -->
-  <p>
-    <%= @post.ratings.length %>
-  </p>
-
-  <!-- RATE ACTION -->
-    <% if @current_user.present? %>
-      <%= link_to "Rate Post", rate_post_path(@post) %>
-    <% end %>
-<!-- END RATINGS -->
 
 
 <!-- COMMENTS -->
   <% @post.comments.each do | comment | %>
-    <p>
-      <%= cl_image_tag(comment.user.image, :class => "avatar") %>
-      <%= link_to(comment.user.username, "/users/#{comment.user_id}") %>:
+  <ul class="collection">
+    <div class="row">
+    <li class = "collection-item avatar col m3 s12">
+      <%= cl_image_tag(comment.user.image, :class => "circle") %>
+    </li>
+      <p class="col m9 s12">
+      <%= link_to(comment.user.username, "/users/#{comment.user_id}") %>
+      <br />
       <%= comment.text %>
+      </p>
+      <p class="col m9 s12">
+      Posted: <%= time_ago_in_words(comment.created_at) %> ago
     </p>
+  </div>
+</ul>
   <% end %>
   <!-- ALLOW LOGGED IN USER TO COMMENT -->
     <% if @current_user.present? %>
       <p>
+        <div class="row">
+          <form class="col s12">
+            <div class="row">
+              <div class="input-field col s12">
         <%= form_for @comment, :url => comment_post_path( :post_id => @post, :user_id => @post.user.id ) do |f| %>
           <p>
             <%= f.label :text %>
-            <%= f.text_field :text, :required => true %>
-          </p>
+            <%= f.text_field :text, :required => true, :class => "materialize-textarea", :id => "textarea1" %>
+          </div>
+        </div>
           <%= f.submit %>
         <% end %>
+      </form>
+    </div>
       </p>
     <% end %>
 <!-- END COMMENTS -->
 
 <!-- EDIT - ONLY AVAILABLE FOR AUTHOR OF POST -->
-   <% if @current_user.id == @author_id %>
+  <% if @current_user.present? %>
+  <% if @current_user.id == @author_id %>
+
    <div class="controls">
      <%= link_to "Edit Post", edit_post_path( @post ) %> |
      <%= link_to "Delete Post", post_path( @post), :method => :delete, :data => {:confirm => "Are you sure?"} %>
    </div>
+   <% end %>
    <% end %>
 <!-- END EDIT -->

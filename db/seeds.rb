@@ -10,13 +10,13 @@
     # DUMMY USERS
 User.destroy_all
 
-u1 = User.create :username => "fancy", :email => "fancy@email.com", :password => "chicken", :password_confirmation => "chicken"
+u1 = User.create :username => "fancy", :email => "fancy@email.com", :password => "chicken", :password_confirmation => "chicken", :bio => "They see me trollin' ~*"
 
-u2 = User.create :username => "rozilla", :email => "rozilla@email.com", :password => "chicken", :password_confirmation => "chicken"
+u2 = User.create :username => "rozella", :email => "rozella@email.com", :password => "chicken", :password_confirmation => "chicken", :bio => "Hello World! I'm Rozella :)"
 
-u3 = User.create :username => "champman", :email => "champman@email.com", :password => "chicken", :password_confirmation => "chicken"
+u3 = User.create :username => "champman", :email => "champman@email.com", :password => "chicken", :password_confirmation => "chicken", :bio => "Sah sassy~"
 
-u4 = User.create :username => "samme", :email => "sam@email.com", :password => "chicken", :password_confirmation => "chicken"
+u4 = User.create :username => "samme", :email => "sam@email.com", :password => "chicken", :password_confirmation => "chicken", :bio => "..."
 
 puts "\tUser count: #{User.all.count}"
 
@@ -24,17 +24,17 @@ puts "\tUser count: #{User.all.count}"
     # DUMMY POSTS
 Post.destroy_all
 
-p1 = Post.create :title => "Burn 2016 Burn!", :text => "Upvote if you wish we could erase 2016 from history!!", :date => "2016-01-01", :pinnedpost => true, :goodpost => false
+p1 = Post.create :title => "Burn 2016 Burn!", :text => "Upvote if you wish we could erase 2016 from history!!", :date => "2016-01-01", :pinnedpost => true
 
-p6 = Post.create :title => "Trump", :text => "The world is over. America, you suck. WHYYYYY!", :date => "2016-11-26", :goodpost => false
+p6 = Post.create :title => "Trump", :text => "The world is over. America, you suck. WHYYYYY!", :date => "2016-11-26"
 
-p2 = Post.create :title => "Found out Santa isn't real", :text => "WHY WOULD YOU LIE TO MEEEE. MY LIFE IS A LIEEEEE!!", :date => "2016-1-1", :goodpost => false
+p2 = Post.create :title => "Found out Santa isn't real", :text => "WHY WOULD YOU LIE TO MEEEE. MY LIFE IS A LIEEEEE!!", :date => "2016-1-1"
 
-p3 = Post.create :title => "Badger made me present today", :text => "That was the worst.", :date => "2016-11-25", :goodpost => false
+p3 = Post.create :title => "Badger made me present today", :text => "That was the worst.", :date => "2016-11-25"
 
-p4 = Post.create :title => "That earthquake", :text => "Terrible, terrible tragedy. Many lives lost. Very sad. T_T </3", :date => "2016-11-25", :goodpost => false
+p4 = Post.create :title => "That earthquake", :text => "Terrible, terrible tragedy. Many lives lost. Very sad. T_T </3", :date => "2016-11-25"
 
-p5 = Post.create :title => "Broke my project", :text => "RIGHT BEFORE DEMO, I BROKE MY FUCKING PROJECT WHYYYYYYY", :date => "2016-11-11", :goodpost => false
+p5 = Post.create :title => "Broke my project", :text => "RIGHT BEFORE DEMO, I BROKE MY FUCKING PROJECT WHYYYYYYY", :date => "2016-11-11"
 
 puts "\tPost count: #{Post.all.count}"
 

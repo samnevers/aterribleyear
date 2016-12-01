@@ -1,27 +1,34 @@
 
 
+<div class="row">
+  <form class="col s12">
+    <div class="row">
 <%= form_for(@post, :html => {:multipart => true}) do |f| %>
-  <div class="form">
-  <p>
-    <%= f.label :title %>
-    <%= f.text_field :title, :required => true %>
-  </p>
-  <p>
-    <%= f.label :date %>
-    <%= f.date_field :date, :required => true, :min => "2016-01-01", :max => "2016-12-31" %>
-  </p>
-  <p>
-    <%= f.label :text %>
-    <%= f.text_area :text, cols: 100, rows: 40, :class => "textbox", :required => true %>
-  </p>
-  <p>
-    <%= f.label :image %>
-    <%= f.cl_image_upload :image, :required => true %>
-
-  </p>
-  <button class ="submit">
+      <div class="input-field col s6 offset-s3">
+        <%= f.label :title, :class => "active" %>
+        <%= f.text_field :title, :required => true %>
+      </div>
+      <div class="input-field col s6 offset-s3">
+        <%= f.label :date, :class => "active"%>
+        <%= f.date_field :date, :required => true, :min => "2016-01-01", :max => "2016-12-31" %>
+      </div>
+      <div class="input-field col s6 offset-s3">
+        <%= f.label :text, :class => "active" %>
+        <%= f.text_area :text, :class => "materialize-textarea", :id => "textarea1", :required => true %>
+      </div>
+      <div class="input-field col s6 offset-s3">
+        <%= f.label :image, :class => "active" %>
+        <button class="btn waves-effect waves-light">
+        <%= f.cl_image_upload :image, :required => true, :class => "file-path-wrapper" %>
+      </button>
+      </div>
+      <div class="input-field col s6 offset-s3">
+  <button class ="btn waves-effect waves-light" type="submit" name="action">
   <%= f.submit %>
   </button>
+  </div>
+    </div>
+  </form>
 </div>
 <% end %>
 
