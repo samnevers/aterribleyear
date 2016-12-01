@@ -2,17 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.collection {
-  background-color: white;
-  .row{
-    .collection-item{
-      .circle{
-        padding: 8px;
-      }
-    }
-  }
-}
-
 .home-hero{
   background-image: url("http://res.cloudinary.com/dum3wmulco/image/upload/v1480568979/fire-home_oirmop.jpg");
   background-size: cover;
@@ -20,11 +9,24 @@
 }
 
 .about-hero{
+  background-image: url("http://giffiles.alphacoders.com/141/14132.gif");
+  background-size: cover;
   background-color: black;
   height: 40vh;
 }
 
 .wrapper {
   text-align: center;
-  margin-top: 45vh;
+  margin-top: 50vh;
+}
+
+.about-wrapper {
+  text-align: center;
+  margin-top: 25vh;
+}
+
+div.container {
+  .row{
+    padding-top: 40px;
+  }
 }
