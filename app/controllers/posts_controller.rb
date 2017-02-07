@@ -4,15 +4,18 @@ class PostsController < ApplicationController
     @posts = Post.all
   end
 
+
   def show
     @post = Post.find_by :id => params[:id]
     @comment = Comment.new
     @author_id = @post.user_id
   end
 
+
   def new
     @post = Post.new
   end
+
 
   def create
     post = Post.new post_params
@@ -27,9 +30,11 @@ class PostsController < ApplicationController
     redirect_to "/posts/#{post.id}"
   end
 
+
   def edit
     @post = Post.find_by :id => params[:id]
   end
+
 
   def update
     # @user = User.find_by :id => params[:id]
@@ -47,11 +52,13 @@ class PostsController < ApplicationController
     end
   end
 
+
   def destroy
     post = Post.find_by :id => params[:id]
     post.destroy
     redirect_to posts_path
   end
+
 
   def rate
     post = Post.find_by :id => params[:id]
@@ -75,6 +82,7 @@ class PostsController < ApplicationController
     end
   end
 
+
   def comment
     post = Post.find_by :id => params[:id]
     comments = post.comments.where :user_id => @current_user.id
@@ -87,16 +95,18 @@ class PostsController < ApplicationController
     redirect_to post
   end
 
+
   def destroy_2016?
     post = Post.find_by(:id => params[:id], :pinnedpost => true)
 
-    if post && post.ratings.length >= 2016
+    if post && post.ratings.length >= 2
       Post.destroy_all
       flash[:destroyed] = "Oh no! 2016 got too terrible! So we heard your cries and deleted it from history. If only it was that simple... Why not bitch about it by creating a new post?"
       return true
     end
     return false
   end
+
 
   private
     def post_params
