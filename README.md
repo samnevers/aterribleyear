@@ -8,6 +8,11 @@ Look out for the Easter Egg when a certain post is 'upvoted'/'burnt' 2016 times 
 
 ### Built With
 * Ruby on Rails 4.2.6
+* HTML
+* CSS
+* JavaScript
+* Materialize
+* PostgreSQL
 
 ### Future Releases
 * 2017 version
